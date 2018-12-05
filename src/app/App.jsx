@@ -1,22 +1,20 @@
-import React        from 'React';
-import {connect}    from 'react-redux';
-import JokeList     from './joke-list/JokeList';
-import Favorites    from './favorites/Favorites';
-import * as actions from './app-actions';
+import React            from 'React';
+import {connect}        from 'react-redux';
+import JokeList         from './joke-list/JokeList';
+import Favorites        from './favorites/Favorites';
+import * as actions     from './app-actions';
 import {fetchFavorites} from './favorites/favorites-actions';
-import {fetchJokes} from './joke-list/joke-list-actions';
+import {fetchJokes}     from './joke-list/joke-list-actions';
 
 import './app.scss';
 
 class App extends React.Component {
-
   componentDidMount() {
     this.props.fetchFavorites();
     this.props.fetchJokes();
   }
 
   render() {
-
     const {activeTab, setActiveTab} = this.props;
 
     const buttonProps = {
@@ -27,7 +25,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <div className="app-header">
-          <img src="/images/chuck.png" alt=""/>
+        <img src="/images/chuck.png" alt=""/>
         </div>
         <div className="app-body">
           <div className="app-body__buttons">

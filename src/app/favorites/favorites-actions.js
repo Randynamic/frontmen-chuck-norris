@@ -1,3 +1,6 @@
+import axios from 'axios';
+import {decodeHtml, sleep} from 'utils/utils';
+
 import {
  ADD_MANY,
  ADD_ONE,
@@ -35,6 +38,30 @@ export const removeFavorite = (id) => {
     dispatch({ type: REMOVE_ONE, id });
     updateLocalStorage(getState().favorites);
   }
+};
+
+export const addRandomFavorites = () => {
+  return async (dispatch, getState) => {
+    let count = getState().favorites.length;
+    if (count >= 10) return;
+    
+    do {
+      await axios.get('http://api.icndb.com/jokes/random/1')
+        .then(async response => {
+          const data = response.data.value[0];
+          dispatch(addFavorite({
+            id   : data.id,
+            text : decodeHtml(data.joke)
+          }));
+          count = getState().favorites.length;
+        })
+        .catch(error => {
+          // @todo error handling
+          console.log(error);
+        })
+        await sleep(5000);
+    } while (count < 10);
+  };
 };
 
 const updateLocalStorage = (favorites) => {

@@ -7,6 +7,8 @@ const favoritesReducer = (state = initState, action) => {
       return action.favorites
 
     case ADD_ONE:
+      const exists = state.find(favorite => favorite.id === action.favorite.id);
+      if (exists) return state;
       return [
         ...state,
         action.favorite
