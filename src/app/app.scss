@@ -1,26 +1,41 @@
 @import '~styles/common';
 
 .app {
-  max-width: 1000px;
-  margin: 0 auto;
-  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  height: 100%;
+  margin: auto;
+  padding-top: 2rem;
   @media #{$mobile} {
-    margin-top: 1rem;
+    width: auto;
+    padding-top: 1rem;
   }
 }
 
 .app-header {
-  display: flex;
-  justify-content: center;
-  position: relative;
+  img {
+    display: block;
+    margin: 0 auto;
+    height: 30rem;
+    @media #{$mobile} {
+      height: 12rem;
+    }
+  }
 }
 
 .app-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   background: white;
   position: relative;
+  margin: 0 1rem;
+  box-shadow: 6px 6px 16px rgba(black, 0.1);
   &__buttons {
     display: flex;
     justify-content: center;
+    flex-shrink: 0;
   }
   &__button {
     flex: 1;
@@ -32,6 +47,10 @@
     }
     i {
       margin-right: 1rem;
+      color: $medium-blue;
+      &.fa-star {
+        color: $yellow;
+      }
     }
   }
 }

@@ -11,12 +11,14 @@ html {
 
 * {
   outline: none;
+  box-sizing: border-box;
 }
 
 #root {
   display: flex;
   background: $light-blue;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
   background: $medium-blue;
   background: linear-gradient(to bottom, lighten($medium-blue, 20%), $medium-blue);
 }

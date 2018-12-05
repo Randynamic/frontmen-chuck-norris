@@ -1,26 +1,37 @@
 import React        from 'react';
 import {connect}    from 'react-redux';
-import * as actions from './joke-list-actions';
 
+import {addFavorite, removeFavorite} from '../favorites/favorites-actions';
 import './joke-list.scss';
 
-class JokeList extends React.Component {
+const JokeList = ({ jokes, favorites, removeFavorite, addFavorite }) => {
+  return (
+    <div className="joke-list">
+      {jokes.jokes.map(joke => {
+        const isFavorite = favorites.find(favorite => favorite.id === joke.id);
+        const toggleFavorite = () => isFavorite
+          ? removeFavorite(joke.id)
+          : addFavorite(joke);
 
-  componentDidMount() {
-    this.props.fetchJokes();
-  }
-
-  render() {
-    return (
-      <div className="joke-list">
-        {this.props.jokes.map(joke =>
-          <div key={joke.id} className="joke-list__item">
-                {joke.text}
+        return (
+          <div key={joke.id} className="joke-list__joke"
+            onClick={toggleFavorite}>
+            <div className="joke-list__joke-text">
+              {joke.text}            
+            </div>
+            <i className={`${isFavorite ? 'fas' : 'far'} fa-star`}>
+            </i>
           </div>
-        )}
-      </div>
-    );
-  }
-}
+        );
+      })}
+    </div>
+  );
+};
 
-export default connect(state => state.jokes, actions)(JokeList);
+export default connect(
+  state => ({
+    favorites: state.favorites,
+    jokes: state.jokes
+  }),
+  {addFavorite, removeFavorite}
+)(JokeList);

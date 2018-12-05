@@ -6,10 +6,24 @@
   padding: 2rem;
   padding-top: 1rem;
   background: white;
-  &__item {
+  overflow-y: auto;
+  overflow-x: hidden;
+  &__joke {
+    display: flex;
     padding: 1rem;
+    flex-shrink: 0;
     &:nth-child(even) {
       background: $light-blue;
     }
+    i {
+      margin-left: auto;
+      color: $yellow;
+      &.fa-trash-alt {
+        color: #bf3b3b;
+      }
+    }
+  }
+  &__joke-text {
+    margin-right: 1rem;
   }
 }
