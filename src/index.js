@@ -7,6 +7,7 @@ import App        from './app/App';
 
 import {createStore, applyMiddleware} from 'redux';
 import 'normalize.css';
+import './styles/basis.scss';
 
 const store = createStore(
   reducers,

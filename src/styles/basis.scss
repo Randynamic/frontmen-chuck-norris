@@ -1,0 +1,22 @@
+@import '~styles/common';
+
+html {
+  font-family: 'Roboto', sans-serif;
+  color: $color-text-default;
+  font-size: 16px;
+  @media #{$mobile} {
+    font-size: 40px;
+  }
+}
+
+* {
+  outline: none;
+}
+
+#root {
+  display: flex;
+  background: $light-blue;
+  min-height: 100vh;
+  background: $medium-blue;
+  background: linear-gradient(to bottom, lighten($medium-blue, 20%), $medium-blue);
+}

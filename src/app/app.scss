@@ -1,0 +1,37 @@
+@import '~styles/common';
+
+.app {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 3rem;
+  @media #{$mobile} {
+    margin-top: 1rem;
+  }
+}
+
+.app-header {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.app-body {
+  background: white;
+  position: relative;
+  &__buttons {
+    display: flex;
+    justify-content: center;
+  }
+  &__button {
+    flex: 1;
+    border: 0;
+    padding: 1rem;
+    background: $light-blue;
+    &.is-active {
+      background: none;
+    }
+    i {
+      margin-right: 1rem;
+    }
+  }
+}
