@@ -11,7 +11,7 @@ const JokeList = ({ jokes, favorites, removeFavorite, addFavorite, fetchJokes })
     <div className="joke-list-container">
       <div className="joke-list">
         {jokes.jokes.map(joke => {
-          const isFavorite = favorites.find(favorite => favorite.id === joke.id);
+          const isFavorite = favorites.favorites.find(favorite => favorite.id === joke.id);
           const toggleFavorite = () => isFavorite
             ? removeFavorite(joke.id)
             : addFavorite(joke);

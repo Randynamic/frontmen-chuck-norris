@@ -10,7 +10,7 @@ export const fetchJokes = () => {
   return dispatch => {
     dispatch({ type: FETCH_INIT });
 
-    axios.get(' http://api.icndb.com/jokes/random/10')
+    axios.get('http://api.icndb.com/jokes/random/10')
       .then(response => {
         const jokes = response.data.value.map(joke => ({
           id   : joke.id,
@@ -19,8 +19,8 @@ export const fetchJokes = () => {
         dispatch({ type: FETCH_SUCCESS, jokes });
       })
       .catch(error => {
-        // @todo error handling
-        console.log(error);
+        console.error(error);
+        alert("Couldn't fetch jokes. Please try again later");
       })
   };
 };

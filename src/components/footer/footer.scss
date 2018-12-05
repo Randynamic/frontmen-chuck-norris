@@ -19,8 +19,17 @@
     cursor: pointer;
     &.is-disabled {
       opacity: 0.5;
+      cursor: default;
       @media #{$mobile} {
         display: none;
+      }
+    }
+    &.is-red {
+      background: $red;
+      @media #{$mobile} {
+        i {
+          display: none;
+        }
       }
     }
     i {
@@ -41,9 +50,17 @@
       }
     }
   }
-  @media #{$mobile} {
-    #{$self}__button-text {
+  &__button-text {
+    @media #{$mobile} {
       display: none;
+    }
+  }
+  &__button-timer {
+    margin-left: 0.5rem;
+    font-weight: bold;
+    @media #{$mobile} {
+      font-weight: normal;
+      margin: 0;
     }
   }
 }
